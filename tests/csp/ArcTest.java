@@ -10,7 +10,7 @@ import java.util.ArrayList;
 class ArcTest
 {
     /**
-     * Test de la classe Arc où on créée 2 sommets avec une liste de contraintes
+     * Test de la classe Arc où on créée 2 variables avec une liste de contraintes
      */
     @Test
     void arcTest1()
@@ -27,7 +27,6 @@ class ArcTest
 
         // Arc
         Arc arc = new Arc(variable1, variable2, listeContraintes);
-
         System.out.println(arc);
     }
 

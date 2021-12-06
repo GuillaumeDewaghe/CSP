@@ -40,8 +40,8 @@ public class Contrainte
     public String toString()
     {
         return "Contrainte{" +
-                "valeur1=" + valeur1 +
-                ", valeur2=" + valeur2 +
+                "valeur1 = " + valeur1 +
+                ", valeur2 = " + valeur2 +
                 '}';
     }
 }

@@ -40,8 +40,8 @@ public class Variable
     public String toString()
     {
         return "Variable{" +
-                "id=" + id +
-                ", domaine=" + domaine +
+                "id = " + id +
+                ", domaine = " + domaine +
                 '}';
     }
 }
