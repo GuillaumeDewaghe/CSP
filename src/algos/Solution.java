@@ -47,9 +47,10 @@ public class Solution
     @Override
     public String toString()
     {
-        return "Solution{" +
-                "variable=" + variable +
-                ", assignation=" + assignation +
-                '}';
+        return "Solution" +
+                "\n{\n" +
+                "\t" + variable +
+                ", assignation = " + assignation +
+                "\n}\n";
     }
 }
