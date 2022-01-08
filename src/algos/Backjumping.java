@@ -6,12 +6,9 @@ import csp.Contrainte;
 
 import java.util.ArrayList;
 
-/**
- * Backtracking chronologique
- */
-public class Backtracking
+public class Backjumping
 {
-    public ArrayList<Solution> BT(CSP csp)
+    public ArrayList<Solution> BJ(CSP csp)
     {
         int i = 0, j, assignation;
         boolean ok;
@@ -19,28 +16,28 @@ public class Backtracking
         ArrayList<Domaine> listeDomaines = new ArrayList<>();
 
         // Initialisation des listes de solutions et des domaines
-        for(j = 0; j < csp.getListeVariables().size(); j++)
+        for (j = 0; j < csp.getListeVariables().size(); j++)
         {
             listeSolutions.add(new Solution(csp.getListeVariables().get(j) ) );
             listeDomaines.add(new Domaine(csp.getListeVariables().get(j).getDomaine() ) );
         }
-        while( (i >= 0) && (i < csp.getListeVariables().size() ) )
+        while ( (i >= 0) && (i < csp.getListeVariables().size() ) )
         {
             ok = false;
-            while( (!ok) && (listeDomaines.get(i).getListeValeurs().size() != 0) )
+            while ( (!ok) && (listeDomaines.get(i).getListeValeurs().size() != 0) )
             {
                 assignation = listeDomaines.get(i).getListeValeurs().get(0);
                 listeDomaines.get(i).getListeValeurs().remove(0);
                 listeSolutions.get(i).setAssignation(assignation);
-                if(assignationCouranteCoherente(csp, listeSolutions) )
+                if (assignationCouranteCoherente(csp, listeSolutions) )
                 {
                     ok = true;
                 }
             }
-            if(!ok)
+            if (!ok)
             {
                 listeDomaines.get(i).getListeValeurs().clear();
-                for(j = 0; j <= csp.getListeVariables().size(); j++)
+                for (j = 0; j <= csp.getListeVariables().size(); j++)
                 {
                     listeDomaines.get(i).getListeValeurs().add(j);
                 }
@@ -52,7 +49,7 @@ public class Backtracking
                 i++;
             }
         }
-        if(i == -1)
+        if (i == -1)
         {
             return null;
         }
@@ -90,9 +87,9 @@ public class Backtracking
             for(Contrainte contrainte : arc.getListeContraintes() )
             {
                 if( (contrainte.getValeur1() == solution1.getAssignation() && contrainte.getValeur2() == solution2.getAssignation() )
-                || (solution1.getAssignation() == -1 && solution2.getAssignation() == -1)
-                || (solution1.getAssignation() == -1 && contrainte.getValeur2() == solution2.getAssignation() )
-                || (solution2.getAssignation() == -1 && contrainte.getValeur1() == solution1.getAssignation() ) )
+                        || (solution1.getAssignation() == -1 && solution2.getAssignation() == -1)
+                        || (solution1.getAssignation() == -1 && contrainte.getValeur2() == solution2.getAssignation() )
+                        || (solution2.getAssignation() == -1 && contrainte.getValeur1() == solution1.getAssignation() ) )
                 {
                     ok = true;
                 }
